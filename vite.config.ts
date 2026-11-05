@@ -7,7 +7,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages build: GITHUB_PAGES=true produces a static site served from /citaia/.
-const isGhPages = process.env.GITHUB_PAGES === "true";
+const isGhPages = process.env["GITHUB_PAGES"] === "true";
 const base = isGhPages ? "/citaia/" : "/";
 
 export default defineConfig({
