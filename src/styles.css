@@ -142,3 +142,25 @@
     color: var(--color-foreground);
   }
 }
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-navy: var(--navy);
+  --color-petrol: var(--petrol);
+  --color-slate-blue: var(--slate-blue);
+  --color-olive: var(--olive);
+  --color-olive-light: var(--olive-light);
+  --color-sage: var(--sage);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-haze: var(--haze);
+  --color-gold: var(--gold);
+}
+:root {
+  --navy: #0B1420; --petrol: #142333; --slate-blue: #263747;
+  --olive: #788C3D; --olive-light: #A7BC68; --sage: #DCE5C8;
+  --paper: #F7F8F5; --mist: #E9ECE7; --haze: #AAB4BF; --gold: #C5A86A;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); }
+section[id] { scroll-margin-top: 72px; }
