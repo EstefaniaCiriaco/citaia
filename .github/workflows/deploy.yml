@@ -30,12 +30,14 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: "true"
-      - name: Prepare Pages folder
+      - name: Inspect build output
         run: |
-          # The static site is emitted to dist/client; publish it as the dist folder.
-          rm -rf pages && cp -r dist/client pages
-          cp pages/index.html pages/404.html
-          touch pages/.nojekyll
+          echo "Contenido de la carpeta principal:"
+          ls -la
+          echo "Carpeta dist:"
+          ls -la dist || true
+          echo "Archivos HTML encontrados:"
+          find . -name "*.html" -not -path "./node_modules/*" | head -50
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
