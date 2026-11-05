@@ -30,7 +30,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: "true"
-      - name: Inspect build output
+      - name: Prepare Pages folder
         run: |
           echo "Contenido de la carpeta principal:"
           ls -la
