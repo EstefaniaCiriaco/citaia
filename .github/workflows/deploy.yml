@@ -1,3 +1,5 @@
+
+  
 name: Deploy to GitHub Pages
 
 on:
@@ -19,26 +21,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Update nmp
+
+      - name: Update npm
         run: npm install -g npm@11.19.1
+
       - name: Install dependencies
         run: npm install
+
       - name: Build static site
         run: npm run build
         env:
           GITHUB_PAGES: "true"
+
       - name: Prepare Pages folder
         run: |
-          echo "Contenido de la carpeta principal:"
-          ls -la
-          echo "Carpeta dist:"
-          ls -la dist || true
-          echo "Archivos HTML encontrados:"
-          find . -name "*.html" -not -path "./node_modules/*" | head -50
+          echo "Verificando archivos generados:"
+          ls -la .output/public
+          test -f .output/public/index.html
+          rm -rf pages
+          mkdir -p pages
+          cp -R .output/public/. pages/
+          cp pages/index.html pages/404.html
+          touch pages/.nojekyll
+          echo "Carpeta pages preparada:"
+          ls -la pages
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: pages
