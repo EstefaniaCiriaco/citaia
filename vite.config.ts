@@ -14,7 +14,6 @@ export default defineConfig({
   vite: { base },
   ...(isGhPages
     ? {
-        nitro: { preset: "static", output: { dir: "dist", publicDir: "dist" } },
       }
     : {}),
   tanstackStart: {
